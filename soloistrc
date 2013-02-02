@@ -1,0 +1,12 @@
+cookbook_paths:
+- cookbooks
+recipes:
+- cf_workstation::vim_local
+- cf_workstation::vim_ftdetect
+- cf_workstation::git_config_global_defaults
+- cf_workstation::rdebugrc
+- cf_workstation::iterm
+- pivotal_workstation::postgres
+node_attributes:
+ vim_config_git: "https://github.com/Cyril-sf/vim-config.git"
+ vim_hash: "HEAD"
