@@ -5,7 +5,7 @@ include_recipe "pivotal_workstation::homebrew"
 include_recipe "pivotal_workstation::ack"
 include_recipe "pivotal_workstation::git"
 include_recipe "pivotal_workstation::rvm"
-include_recipe "pivotal_workstation::tmux"
+# include_recipe "pivotal_workstation::tmux"
 
 unless ( File.exists?("/usr/local/bin/vim") and File.exists?("/Applications/MacVim.app") )
   execute "uninstall-vim" do
@@ -80,7 +80,7 @@ unless ( File.exists?("/usr/local/bin/vim") and File.exists?("/Applications/MacV
   execute "compile command-t" do
     only_if "test -d #{vim_dir}/bundle/command-t/ruby/command-t"
     cwd "#{node["vim_home"]}/bundle/command-t/ruby/command-t"
-    command "rvm use system; ruby extconf.rb && make clean && make"
+    command "/usr/bin/ruby extconf.rb && make clean && make"
     user WS_USER
   end
 
@@ -98,5 +98,5 @@ unless ( File.exists?("/usr/local/bin/vim") and File.exists?("/Applications/MacV
   end
 end
 
-pivotal_workstation_bash_it_custom_plugin "vim-alias_vi_to_minimal_vim.bash"
-pivotal_workstation_bash_it_custom_plugin "vim-source_tmux_config.bash"
+# pivotal_workstation_bash_it_custom_plugin "vim-alias_vi_to_minimal_vim.bash"
+# pivotal_workstation_bash_it_custom_plugin "vim-source_tmux_config.bash"
