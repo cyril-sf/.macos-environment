@@ -19,3 +19,8 @@ template "#{WS_HOME}/.vim/ftdetect/rspec.vim" do
   owner WS_USER
 end
 
+template "#{WS_HOME}/.vim/ftdetect/qunit.vim" do
+  source "ftdetect/qunit.vim.erb"
+  owner WS_USER
+end
+
