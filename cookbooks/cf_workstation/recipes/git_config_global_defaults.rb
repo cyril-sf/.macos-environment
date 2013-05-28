@@ -30,6 +30,15 @@
   end
 end
 
+template "#{WS_HOME}/.gitignore_global" do
+  source "gitignore_global.erb"
+  owner WS_USER
+end
+
+execute "set core excludesfile " do
+  command "git config --global core.excludesfile ~/.gitignore_global"
+  user WS_USER
+end
 
 execute "set apply whitespace=nowarn" do
   command "git config --global apply.whitespace nowarn"
